@@ -1,0 +1,20 @@
+{
+    "name": "girlcrawler",
+    "version": "1.0.0",
+    "description": "Fast, smart jandan.net/ooxx crawler",
+    "main": "main.js",
+    "dependencies": {
+        "async": "latest",
+        "commander": "latest",
+        "request": "latest",
+        "cheerio": "latest",
+        "colors": "latest",
+        "progress": "latest"
+    },
+    "keywords": [
+        "jandan",
+        "crawler"
+    ],
+    "author": "Ericlong",
+    "license": "MIT"
+}
