@@ -1,6 +1,6 @@
 # GirlCrawler
 
-![example](./res/example.png)
+![example](https://raw.githubusercontent.com/Ericlong233/girlcrawler/master/res/example.png)
 
 ### Introduction
 
