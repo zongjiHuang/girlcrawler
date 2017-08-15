@@ -6,18 +6,15 @@
 
 GirlCrawler is a fast, smart [jandan.net/ooxx](http://jandan.net/ooxx) crawler. It's based on efficient, asynchronous Node.js. It has the following features:
 
-* Easy to configure and use
 * Fast with Node.js' async I/O
 * Filter based on OO/XX (likes/dislikes)
-* Updating optimization
+* Update with optimization
 
 ### Usage
 
 `node main.js [options]`
 
-* `-t, --thread` The *maximum* number of concurrent downloads, default 128.
-
-  Because of the network speed, it may not take any effect though the value is very large.
+* `-t, --thread` The *maximum* number of concurrent downloads, default 128. Because of the network speed, it may not take any effect though the value is very large.
 
 * `-f, --filter` OO/XX based filter, default "oo > xx".
 
