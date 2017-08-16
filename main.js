@@ -15,7 +15,7 @@ var async    = require("async"),
 
 var url    = "http://jandan.net/ooxx",
     dir    = "./jandangirls",
-    config = dir + "/config.json";
+    config = dir + "/.config";
 
 program.version("1.1.0")
        .option("-t, --thread <thread>", "The maximum number of concurrent downloads, default 128")
