@@ -6,10 +6,10 @@ const async    = require("async"),
       program  = require("commander"),
       request  = require("request"),
       cheerio  = require("cheerio"),
-      fs       = require("fs"),
-      path     = require("path"),
       colors   = require("colors"),
-      Progress = require("progress");
+      Progress = require("progress"),
+      fs       = require("fs"),
+      path     = require("path");
 
 program.version("1.0")
        .option("-t, --thread <thread>", "The maximum number of concurrent downloads, default 128")
