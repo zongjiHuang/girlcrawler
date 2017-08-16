@@ -26,6 +26,11 @@ GirlCrawler is a fast, smart [jandan.net/ooxx](http://jandan.net/ooxx) crawler. 
 4. Execute `npm install` to install dependencies.
 5. Execute `node main.js` to run the crawler.
 
+### To-do List
+
+* Save config files every time before the crawler crawls a page
+* Add more options
+
 ### Dependencies
 
 * async [github.com/caolan/async](https://github.com/caolan/async) 
