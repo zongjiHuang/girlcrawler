@@ -11,6 +11,8 @@
         "colors": "latest",
         "progress": "latest"
     },
+    "preferGlobal": "true",
+    "bin": "main.js",
     "keywords": [
         "jandan",
         "crawler"

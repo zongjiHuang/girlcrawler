@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 //
 // Ericlong233/girlcrawler
 //
