@@ -11,12 +11,15 @@
         "colors": "latest",
         "progress": "latest"
     },
-    "preferGlobal": "true",
     "bin": "main.js",
     "keywords": [
         "jandan",
         "crawler"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Ericlong233/girlcrawler"
+    },
     "author": "Ericlong",
     "license": "MIT"
 }
