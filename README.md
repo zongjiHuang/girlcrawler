@@ -27,8 +27,10 @@ GirlCrawler is a fast, smart [jandan.net/ooxx](http://jandan.net/ooxx) crawler. 
 
 ### To-do List
 
-* Save config files every time before the crawler crawls a page
-* Add more options
+* [ ] Save config files every time before the crawler crawls a page
+
+
+* [ ] Add more options
 
 ### Dependencies
 
