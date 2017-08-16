@@ -13,14 +13,14 @@ var async    = require("async"),
     fs       = require("fs"),
     path     = require("path");
 
+var url    = "http://jandan.net/ooxx",
+    dir    = "./jandangirls",
+    config = dir + "/config.json";
+
 program.version("1.1.0")
        .option("-t, --thread <thread>", "The maximum number of concurrent downloads, default 128")
        .option("-f, --filter <filter>", "OO/XX based filter, default \"oo > xx\"")
        .parse(process.argv);
-
-var url    = "http://jandan.net/ooxx",
-    dir    = "./jandangirls",
-    config = dir + "/config.json";
 
 function getPageCount(callback) {
     request(url, (err, response, body) => {
