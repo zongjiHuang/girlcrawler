@@ -17,7 +17,7 @@ program.version("1.0")
        .parse(process.argv);
 
 const url = "http://jandan.net/ooxx",
-      dir = "./girls";
+      dir = "./jandangirls";
 
 function getPageCount(callback) {
     request(url, (err, response, body) => {
