@@ -2,45 +2,42 @@
 
 ![example](https://raw.githubusercontent.com/Ericlong233/girlcrawler/master/res/example.png)
 
-### Introduction
+### 介绍
 
-GirlCrawler is a fast, smart [jandan.net/ooxx](http://jandan.net/ooxx) crawler. It's based on efficient, asynchronous Node.js. It has the following features:
+GirlCrawler 是一个快速、智能的[煎蛋妹子图](http://jandan.net/ooxx)爬虫。它基于高效、异步的 Node.js。具有以下特性：
 
-* Fast with Node.js' async I/O
-* Filter based on OO/XX (likes/dislikes)
-* Update with optimization
+* 快速，由 Node.js 的异步 I/O 提供支持
+* 基于 OO/XX 的过滤器
+* 更新优化
 
-### Usage
+### 用法
 
-`node main.js [options]`
+`girlcrawler [options]`
 
-* `-t, --thread` The *maximum* number of concurrent downloads, default 128. Because of the network speed, it may not take any effect though the value is very large.
+* `-t, --thread` 下载*最大*并发数，默认为 128。由于网速的快慢，即使这个值非常大，也可能不会有任何速度上的提升。
+* `-f, --filter` 基于 OO/XX 的过滤器，默认为 “oo > xx”。
 
-* `-f, --filter` OO/XX based filter, default "oo > xx".
+### 安装
 
-### Installation
+1. 安装 [Git](https://git-scm.com/) 和 [Node.js](https://nodejs.org)。如已经安装，跳过此步骤。
+2. 打开终端 (Mac & Linux) 或 命令提示符 (Windows)，执行 `git clone` 把项目克隆到本地。
+3. 执行 `npm install girlcrawler -g` 来全局安装。
+4. 当需要式，执行 `girlcrawler` 来运行程序。
 
-1. Install [Git](https://git-scm.com/) and [Node.js](https://nodejs.org). If you've already installed, skip this step.
-2. Open Terminal (in Mac & Linux) or Command Prompt (in Windows), execute `git clone` to clone the project into your default folder.
-3. Execute `npm install girlcrawler -g` to install it globally.
-4. Execute `girlcrawler` every time you want to use it.
+### 待办清单
 
-### To-do List
+* [ ] 在每一次下载前写入配置
+* [ ] 添加更多选项
 
-* [ ] Save config files every time before the crawler crawls a page
+### 开源组件
 
-
-* [ ] Add more options
-
-### Dependencies
-
-* async [github.com/caolan/async](https://github.com/caolan/async) 
+* async [github.com/caolan/async](https://github.com/caolan/async)
 * commander [github.com/tj/commander.js/](https://github.com/tj/commander.js/)
 * request [github.com/request/request](https://github.com/request/request)
 * cheerio [github.com/cheeriojs/cheerio](https://github.com/cheeriojs/cheerio)
 * colors [github.com/Marak/colors.js](https://github.com/Marak/colors.js)
 * progress [github.com/visionmedia/node-progress](https://github.com/visionmedia/node-progress)
 
-### License
+### 协议
 
-MIT License
+[MIT License](https://github.com/Ericlong233/girlcrawler/blob/master/LICENSE)
