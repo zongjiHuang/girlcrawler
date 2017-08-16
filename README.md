@@ -24,7 +24,7 @@ GirlCrawler is a fast, smart [jandan.net/ooxx](http://jandan.net/ooxx) crawler. 
 2. Open Terminal (in Mac & Linux) or Command Prompt (in Windows), execute `git clone` to clone the project into your default folder.
 3. Execute `cd girlcrawler` to the project folder.
 4. Execute `npm install` to install dependencies.
-5. Execute `node main.js` to run the crawler.
+5. Execute `node main.js` to run the crawler. The result should be in `jandangirls` folder. You can use `node girlcrawler` in your default folder later.
 
 ### To-do List
 
