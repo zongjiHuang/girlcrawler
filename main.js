@@ -13,13 +13,14 @@ const async    = require("async"),
       fs       = require("fs"),
       path     = require("path");
 
-program.version("1.0")
+program.version("1.1.0")
        .option("-t, --thread <thread>", "The maximum number of concurrent downloads, default 128")
        .option("-f, --filter <filter>", "OO/XX based filter, default \"oo > xx\"")
        .parse(process.argv);
 
-const url = "http://jandan.net/ooxx",
-      dir = "./jandangirls";
+const url    = "http://jandan.net/ooxx",
+      dir    = "./jandangirls",
+      config = dir + "/config.json";
 
 function getPageCount(callback) {
     request(url, (err, response, body) => {
@@ -30,26 +31,29 @@ function getPageCount(callback) {
 }
 
 // TODO: 在每一次下载前写入配置
-function config(pageCount, callback) {
-    var configPath = dir + "/config.json",
-        thread, filter, start, end = pageCount;
+function getConfig(pageCount, callback) {
+    var thread, filter, start, end = pageCount;
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
-    if (!fs.existsSync(configPath)) {
+    if (!fs.existsSync(config)) {
         thread = program.thread || 128;
         filter = program.filter || "oo > xx";
         start  = 1;
     } else {
-        var data = JSON.parse(fs.readFileSync(configPath, "utf8"));
+        var data = JSON.parse(fs.readFileSync(config, "utf8"));
         thread = program.thread || data.thread || 128;
         filter = program.filter || data.filter || "oo > xx";
         start  = data.lastUpdate || 1;
     }
-    fs.writeFileSync(configPath, JSON.stringify({
-        thread: thread, filter: filter, lastUpdate: end
-    }));
     callback(null, thread, filter, start, end);
+}
+
+function setConfig(thread, filter, i, callback) {
+    fs.writeFileSync(config, JSON.stringify({
+        thread: thread, filter: filter, lastUpdate: i
+    }));
+    callback(null);
 }
 
 function getPictureInfos(page, filter, callback) {
@@ -130,7 +134,7 @@ function downloadPics(page, pictures, thread, callback) {
 async.waterfall([
 
     (callback) => getPageCount(callback),
-    (pageCount, callback) => config(pageCount, callback),
+    (pageCount, callback) => getConfig(pageCount, callback),
     (thread, filter, start, end, callback) => {
 
         console.log();
@@ -140,6 +144,7 @@ async.waterfall([
         var i = start;
         async.whilst(() => i <= end, (callback) => {
             async.waterfall([
+                (callback) => setConfig(thread, filter, i, callback),
                 (callback) => getPictureInfos(i, filter, callback),
                 (pictures, callback) => downloadPics(i, pictures, thread, callback),
             ], (err, result) => {
