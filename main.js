@@ -4,23 +4,23 @@
 // Ericlong233/girlcrawler
 //
 
-const async    = require("async"),
-      program  = require("commander"),
-      request  = require("request"),
-      cheerio  = require("cheerio"),
-      colors   = require("colors"),
-      Progress = require("progress"),
-      fs       = require("fs"),
-      path     = require("path");
+var async    = require("async"),
+    program  = require("commander"),
+    request  = require("request"),
+    cheerio  = require("cheerio"),
+    colors   = require("colors"),
+    Progress = require("progress"),
+    fs       = require("fs"),
+    path     = require("path");
 
 program.version("1.1.0")
        .option("-t, --thread <thread>", "The maximum number of concurrent downloads, default 128")
        .option("-f, --filter <filter>", "OO/XX based filter, default \"oo > xx\"")
        .parse(process.argv);
 
-const url    = "http://jandan.net/ooxx",
-      dir    = "./jandangirls",
-      config = dir + "/config.json";
+var url    = "http://jandan.net/ooxx",
+    dir    = "./jandangirls",
+    config = dir + "/config.json";
 
 function getPageCount(callback) {
     request(url, (err, response, body) => {
@@ -30,7 +30,6 @@ function getPageCount(callback) {
     });
 }
 
-// TODO: 在每一次下载前写入配置
 function getConfig(pageCount, callback) {
     var thread, filter, start, end = pageCount;
     if (!fs.existsSync(dir)) {
