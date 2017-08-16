@@ -19,14 +19,10 @@ GirlCrawler 是一个快速、智能的[煎蛋妹子图](http://jandan.net/ooxx)
 
 ### 安装
 
-1. 安装 [Git](https://git-scm.com/) 和 [Node.js](https://nodejs.org)。如已经安装，跳过此步骤。
-2. 打开终端 (Mac & Linux) 或 命令提示符 (Windows)，执行 `git clone` 把项目克隆到本地。
-3. 执行 `npm install girlcrawler -g` 来全局安装。
-4. 当需要时，执行 `girlcrawler` 来运行程序。
+ 在终端 (Mac & Linux) 或 命令提示符 (Windows)，执行`npm install girlcrawler -g` 。以后，可以直接使用 `girlcrawler` 来运行爬虫。
 
 ### 待办清单
 
-* [x] ~~在每一次下载前写入配置~~
 * [ ] 添加更多选项
 
 ### 开源组件
