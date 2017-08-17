@@ -1,15 +1,16 @@
 {
     "name": "girlcrawler",
-    "version": "1.1.5",
+    "version": "1.2.0",
     "description": "Fast, smart jandan.net/ooxx crawler",
     "main": "main.js",
     "dependencies": {
         "async": "latest",
-        "commander": "latest",
-        "request": "latest",
         "cheerio": "latest",
         "colors": "latest",
-        "progress": "latest"
+        "commander": "latest",
+        "md5": "latest",
+        "progress": "latest",
+        "request": "latest"
     },
     "bin": "main.js",
     "keywords": [

@@ -2,7 +2,9 @@
 
 ![example](https://raw.githubusercontent.com/Ericlong233/girlcrawler/master/res/example.png)
 
- [V2EX](https://www.v2ex.com/t/383493) | [Github](https://github.com/Ericlong233/girlcrawler) | [npm](https://www.npmjs.com/package/girlcrawler) | [更新日志](https://github.com/Ericlong233/girlcrawler/blob/master/CHANGELOG.md) | [欢迎 Star](https://github.com/Ericlong233/girlcrawler)
+[Github](https://github.com/Ericlong233/girlcrawler) | [npm](https://www.npmjs.com/package/girlcrawler) | [更新日志](https://github.com/Ericlong233/girlcrawler/blob/master/CHANGELOG.md) | [欢迎 Star](https://github.com/Ericlong233/girlcrawler)
+
+*注意：适当撸妹益脑，过度撸妹伤身。请在遵守当地法律法规的前提下使用。煎蛋网资源有限，请适当使用。*
 
 ### 介绍
 
@@ -10,7 +12,7 @@ GirlCrawler 是一个快速、智能的[煎蛋妹子图](http://jandan.net/ooxx)
 
 * 快速，由 Node.js 的异步 I/O 提供支持
 * 基于 OO/XX 的过滤器
-* 更新优化
+* 友好的 CLI 界面
 
 ### 用法
 
@@ -37,6 +39,7 @@ GirlCrawler 是一个快速、智能的[煎蛋妹子图](http://jandan.net/ooxx)
 * [cheerio](https://github.com/cheeriojs/cheerio) - 解析 HTML
 * [colors](https://github.com/Marak/colors.js) - 终端字体颜色
 * [progress](https://github.com/visionmedia/node-progress) - 终端进度条
+* [md5](https://github.com/pvorb/node-md5) - MD5 计算
 
 ### 协议
 

@@ -10,6 +10,7 @@ var async    = require("async"),
     cheerio  = require("cheerio"),
     colors   = require("colors"),
     Progress = require("progress"),
+    md5      = require("md5"),
     fs       = require("fs"),
     path     = require("path");
 
@@ -17,10 +18,11 @@ var url    = "http://jandan.net/ooxx",
     dir    = "./jandangirls",
     config = dir + "/.config";
 
-var DEFAULT_THREAD = 64,
-    DEFAULT_FILTER = "oo > xx";
+var DEFAULT_THREAD  = 64,
+    DEFAULT_FILTER  = "oo > xx",
+    BREAK_IMAGE_MD5 = "9a49736345f17e6c90dfe3bcd74dfb5e";
 
-program.version("1.1.5")
+program.version("1.2.0")
        .option("-t, --thread <thread>", "The maximum number of concurrent downloads, default " + DEFAULT_THREAD)
        .option("-f, --filter <filter>", "OO/XX based filter, default \"oo > xx\"")
        .parse(process.argv);
@@ -67,7 +69,6 @@ function getPictureInfos(page, filter, callback) {
                 var comments = [];
                 $("ol.commentlist li").each((i, element) => {
                     comments.push(cheerio.load($(element).html()));
-                    // console.log($(element).html());
                 });
                 callback(null, comments);
             },
@@ -101,12 +102,15 @@ function getPictureInfos(page, filter, callback) {
 }
 
 function downloadPics(page, pictures, thread, callback) {
+
+    var breakImage = []
     var bar = new Progress("Downloading page " + page + " [:bar]".blue + " :percent ", {
         total: pictures.length,
         complete: "#",
         incomplete: "-",
         clear: true
-    })
+    });
+
     async.mapLimit(pictures, thread, (item, callback) => {
         if (!item.url) return callback();    // fixed a bug in 3483878, page 123
         request({
@@ -118,11 +122,18 @@ function downloadPics(page, pictures, thread, callback) {
             }
         }, (err, response, body) => {
             bar.tick();
+            if (md5(body) == BREAK_IMAGE_MD5) {
+                breakImage.push(item.id + path.extname(item.url));
+            }
             callback();
         }).pipe(fs.createWriteStream(dir + "/" + item.id + path.extname(item.url)));
     }, (err, result) => {
+        for (var i of breakImage) {
+            fs.unlinkSync(dir + "/" + i);
+        }
         callback();
     })
+
 }
 
 // 虽然用了 async 还是有一些 callback hell...
