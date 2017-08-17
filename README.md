@@ -2,6 +2,8 @@
 
 ![example](https://raw.githubusercontent.com/Ericlong233/girlcrawler/master/res/example.png)
 
+ [V2EX](https://www.v2ex.com/t/383493) | [Github](https://github.com/Ericlong233/girlcrawler) | [NPM](https://www.npmjs.com/package/girlcrawler) | [更新日志](https://github.com/Ericlong233/girlcrawler/blob/master/CHANGELOG.md) | [欢迎 Star](https://github.com/Ericlong233/girlcrawler)
+
 ### 介绍
 
 GirlCrawler 是一个快速、智能的[煎蛋妹子图](http://jandan.net/ooxx)爬虫。它基于高效、异步的 Node.js。具有以下特性：
