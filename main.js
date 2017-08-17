@@ -20,7 +20,7 @@ var url    = "http://jandan.net/ooxx",
 var DEFAULT_THREAD = 64,
     DEFAULT_FILTER = "oo > xx";
 
-program.version("1.1.2")
+program.version("1.1.4")
        .option("-t, --thread <thread>", "The maximum number of concurrent downloads, default " + DEFAULT_THREAD)
        .option("-f, --filter <filter>", "OO/XX based filter, default \"oo > xx\"")
        .parse(process.argv);
