@@ -8,11 +8,12 @@
 
 ### 介绍
 
-GirlCrawler 是一个快速、智能的[煎蛋妹子图](http://jandan.net/ooxx)爬虫。它基于高效、异步的 Node.js。具有以下特性：
+GirlCrawler 是一个简洁、高效的[煎蛋妹子图](http://jandan.net/ooxx)爬虫。它基于高效、异步的 Node.js。具有以下特性：
 
 * 快速，由 Node.js 的异步 I/O 提供支持
 * 基于 OO/XX 的过滤器
 * 友好的 CLI 界面
+* 通过 MD5 自动过滤失效图片 (1.2.0 版更新内容)
 
 ### 用法
 

@@ -22,7 +22,7 @@ var DEFAULT_THREAD  = 64,
     DEFAULT_FILTER  = "oo > xx",
     BREAK_IMAGE_MD5 = "9a49736345f17e6c90dfe3bcd74dfb5e";
 
-program.version("1.2.0")
+program.version("1.2.1")
        .option("-t, --thread <thread>", "The maximum number of concurrent downloads, default " + DEFAULT_THREAD)
        .option("-f, --filter <filter>", "OO/XX based filter, default \"oo > xx\"")
        .parse(process.argv);
@@ -122,7 +122,7 @@ function downloadPics(page, pictures, thread, callback) {
             }
         }, (err, response, body) => {
             bar.tick();
-            if (md5(body) == BREAK_IMAGE_MD5) {
+            if (!body || (md5(body) == BREAK_IMAGE_MD5)) {
                 breakImage.push(item.id + path.extname(item.url));
             }
             callback();

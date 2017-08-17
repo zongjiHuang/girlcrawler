@@ -6,6 +6,10 @@
 
 * [ ] 寻找图片的更大版本 (基于 Tineye 或 Google Images)
 
+### 1.2.1
+
+* 修复了一个 bug，有小几率使 md5 函数接收到 undefined，发生错误
+
 ### 1.2.0
 
 * 识别图片 MD5，自动清除失效图片 (由 [md5](https://github.com/pvorb/node-md5) 模块提供支持)
