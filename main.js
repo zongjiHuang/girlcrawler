@@ -20,7 +20,7 @@ var url    = "http://jandan.net/ooxx",
 var DEFAULT_THREAD = 64,
     DEFAULT_FILTER = "oo > xx";
 
-program.version("1.1.1")
+program.version("1.1.2")
        .option("-t, --thread <thread>", "The maximum number of concurrent downloads, default " + DEFAULT_THREAD)
        .option("-f, --filter <filter>", "OO/XX based filter, default \"oo > xx\"")
        .parse(process.argv);
@@ -116,6 +116,7 @@ function downloadPics(page, pictures, thread, callback) {
         clear: true
     })
     async.mapLimit(pictures, thread, (item, callback) => {
+        if (!item.url) return callback();    // fixed a bug in 3483878, page 123
         request({
             url: item.url,
             headers: {
