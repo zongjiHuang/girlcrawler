@@ -2,7 +2,7 @@
 
 ![example](https://raw.githubusercontent.com/Ericlong233/girlcrawler/master/res/example.png)
 
- [V2EX](https://www.v2ex.com/t/383493) | [Github](https://github.com/Ericlong233/girlcrawler) | [NPM](https://www.npmjs.com/package/girlcrawler) | [更新日志](https://github.com/Ericlong233/girlcrawler/blob/master/CHANGELOG.md) | [欢迎 Star](https://github.com/Ericlong233/girlcrawler)
+ [V2EX](https://www.v2ex.com/t/383493) | [Github](https://github.com/Ericlong233/girlcrawler) | [npm](https://www.npmjs.com/package/girlcrawler) | [更新日志](https://github.com/Ericlong233/girlcrawler/blob/master/CHANGELOG.md) | [欢迎 Star](https://github.com/Ericlong233/girlcrawler)
 
 ### 介绍
 
