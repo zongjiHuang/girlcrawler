@@ -22,14 +22,11 @@ GirlCrawler 是一个快速、智能的[煎蛋妹子图](http://jandan.net/ooxx)
 ### 安装
 
 * **在线安装 (推荐)：** 执行`npm install girlcrawler -g` 。
-
-  **手动安装：**
-
+* **手动安装：**
   1. 执行 `git clone http://github.com/Ericlong233/girlcrawler.git` 将项目克隆到本地。
   2. 执行 `npm install ./girlcrawler -g` 。
 
-  以后，可以直接执行 `girlcrawler` 来运行爬虫。
-
+* 以后，可以直接执行 `girlcrawler` 来运行爬虫。
 * **注意：** 一定不要漏掉 `-g` ！需要卸载时，输入 `npm uninstall girlcrawler -g` 即可。
 
 ### 开源组件
