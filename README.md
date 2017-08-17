@@ -19,20 +19,25 @@ GirlCrawler 是一个快速、智能的[煎蛋妹子图](http://jandan.net/ooxx)
 
 ### 安装
 
- 在终端 (Mac & Linux) 或 命令提示符 (Windows)，执行`npm install girlcrawler -g` 。以后，可以直接使用 `girlcrawler` 来运行爬虫。
+* **在线安装 (推荐)：** 执行`npm install girlcrawler -g` 。
 
-### 待办清单
+  **手动安装：**
 
-* [ ] 添加更多选项
+  1. 执行 `git clone http://github.com/Ericlong233/girlcrawler.git` 将项目克隆到本地。
+  2. 执行 `npm install ./girlcrawler -g` 。
+
+  以后，可以直接执行 `girlcrawler` 来运行爬虫。
+
+* **注意：** 一定不要漏掉 `-g` ！需要卸载时，输入 `npm uninstall girlcrawler -g` 即可。
 
 ### 开源组件
 
-* async [github.com/caolan/async](https://github.com/caolan/async)
-* commander [github.com/tj/commander.js/](https://github.com/tj/commander.js/)
-* request [github.com/request/request](https://github.com/request/request)
-* cheerio [github.com/cheeriojs/cheerio](https://github.com/cheeriojs/cheerio)
-* colors [github.com/Marak/colors.js](https://github.com/Marak/colors.js)
-* progress [github.com/visionmedia/node-progress](https://github.com/visionmedia/node-progress)
+* [async](https://github.com/caolan/async) - 异步操作整理
+* [commander](https://github.com/tj/commander.js/) - 命令行参数
+* [request](https://github.com/request/request) - 向服务器发出请求
+* [cheerio](https://github.com/cheeriojs/cheerio) - 解析 HTML
+* [colors](https://github.com/Marak/colors.js) - 终端字体颜色
+* [progress](https://github.com/visionmedia/node-progress) - 终端进度条
 
 ### 协议
 
