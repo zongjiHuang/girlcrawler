@@ -17,8 +17,11 @@ var url    = "http://jandan.net/ooxx",
     dir    = "./jandangirls",
     config = dir + "/.config";
 
-program.version("1.1.0")
-       .option("-t, --thread <thread>", "The maximum number of concurrent downloads, default 128")
+var DEFAULT_THREAD = 64,
+    DEFAULT_FILTER = "oo > xx";
+
+program.version("1.1.1")
+       .option("-t, --thread <thread>", "The maximum number of concurrent downloads, default " + DEFAULT_THREAD)
        .option("-f, --filter <filter>", "OO/XX based filter, default \"oo > xx\"")
        .parse(process.argv);
 
@@ -36,13 +39,13 @@ function getConfig(pageCount, callback) {
         fs.mkdirSync(dir);
     }
     if (!fs.existsSync(config)) {
-        thread = program.thread || 128;
-        filter = program.filter || "oo > xx";
+        thread = program.thread || DEFAULT_THREAD;
+        filter = program.filter || DEFAULT_FILTER;
         start  = 1;
     } else {
         var data = JSON.parse(fs.readFileSync(config, "utf8"));
-        thread = program.thread || data.thread || 128;
-        filter = program.filter || data.filter || "oo > xx";
+        thread = program.thread || data.thread || DEFAULT_THREAD;
+        filter = program.filter || data.filter || DEFAULT_FILTER;
         start  = data.lastUpdate || 1;
     }
     callback(null, thread, filter, start, end);
