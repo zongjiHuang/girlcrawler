@@ -20,7 +20,7 @@ var url    = "http://jandan.net/ooxx",
 var DEFAULT_THREAD = 64,
     DEFAULT_FILTER = "oo > xx";
 
-program.version("1.1.4")
+program.version("1.1.5")
        .option("-t, --thread <thread>", "The maximum number of concurrent downloads, default " + DEFAULT_THREAD)
        .option("-f, --filter <filter>", "OO/XX based filter, default \"oo > xx\"")
        .parse(process.argv);
@@ -79,16 +79,8 @@ function getPictureInfos(page, filter, callback) {
                     xx = +item("span.tucao-unlike-container span").text();
                     if (!eval(filter)) continue;
                     id = item("span.tucao-like-container a").attr("data-id");
-                    item("img").each((i, element) => {
-                        // 有 org_src 的则为 gif 图.
-                        // 此时如果获取 src 图不会动, 只有 org_src 会动.
-                        if (item(element).attr("org_src")) {
-                            urls.push("http:" + $(element).attr("org_src"));
-                            // console.log("http:" + $(element).attr("org_src"));
-                        } else {
-                            urls.push("http:" + $(element).attr("src"));
-                            // console.log("http:" + $(element).attr("src"));
-                        }
+                    item("a.view_img_link").each((i, element) => {
+                        urls.push("http:" + $(element).attr("href"));
                     });
                     if (urls.length > 1) {
                         var j = 1;
