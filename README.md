@@ -19,9 +19,9 @@ GirlCrawler 是一个简洁、高效的[煎蛋妹子图](http://jandan.net/ooxx)
 
 `girlcrawler [options]`
 
-* `-t, --thread` 下载*最大*并发数，默认为 64。由于网速的快慢，即使这个值非常大，也可能不会有任何速度上的提升。
-* `-f, --filter` 基于 OO/XX 的过滤器，默认为 `"oo >= 2 * xx"`。
-* `-b, --buffer` 缓冲，表示在下次更新时，从往前 N 页开始爬起。默认为 5。
+* `-t, --thread <thread>` 下载*最大*并发数，默认为 64。由于网速的快慢，即使这个值非常大，也可能不会有任何速度上的提升。
+* `-f, --filter <filter>` 基于 OO/XX 的过滤器，默认为 `"oo >= 2 * xx"`。
+* `-b, --buffer <buffer>` 缓冲，表示在下次更新时，从往前 N 页开始爬起。默认为 5。
 
 ### 安装
 
@@ -30,14 +30,14 @@ GirlCrawler 是一个简洁、高效的[煎蛋妹子图](http://jandan.net/ooxx)
   1. 执行 `git clone http://github.com/Ericlong233/girlcrawler.git` 将项目克隆到本地。
   2. 执行 `npm install ./girlcrawler -g` 。
 
-* 以后，可以直接执行 `girlcrawler` 来运行爬虫。图片保存在 `./jandangirls` 内。
+* 以后，可以直接执行 `girlcrawler` 来运行爬虫。图片保存在当前目录的 `jandangirls` 内。
 * **注意：** 一定不要漏掉 `-g` ！需要卸载时，输入 `npm uninstall girlcrawler -g` 即可。
 
 ### 未来特性
 
 *注意：此栏里的功能尚未实现，且随时有可能变化*
 
-- [ ] 寻找图片的更大版本 (基于 Tineye 或 Google Images)
+- [ ] ~~寻找图片的更大版本 (基于 Tineye 或 Google Images)~~ 没有合适的解决方案
 
 ### 开源组件
 

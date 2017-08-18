@@ -14,7 +14,7 @@ var async    = require("async"),
     fs       = require("fs"),
     path     = require("path");
 
-var url    = "http://jandan.net/ooxx",
+var url    = "http://i.jandan.net/ooxx",
     dir    = "./jandangirls",
     config = dir + "/.config";
 
@@ -23,9 +23,9 @@ var DEFAULT_THREAD  = 64,
     DEFAULT_BUFFER  = 5
     BREAK_IMAGE_MD5 = "9a49736345f17e6c90dfe3bcd74dfb5e";    // 这个不是下载下来的坏图的 md5, 是 request 爬下来的 body 的 md5
 
-program.version("1.3.0")
+program.version("1.3.5")
        .description("简洁、高效的煎蛋妹子图爬虫, powered by Node.js")
-       .option("-t, --thread <thread>", "下载最大并发数, 默认为 " + DEFAULT_THREAD)
+       .option("-t, --thread <thread>", "下载" + "最大".underline + "并发数, 默认为 " + DEFAULT_THREAD)
        .option("-f, --filter <filter>", "基于 OO/XX 的过滤器, 默认为 \"" + DEFAULT_FILTER + "\"")
        .option("-b, --buffer <buffer>", "缓冲, 表示在下次更新时, 从往前 N 页开始爬起. 默认为 " + DEFAULT_BUFFER)
        .parse(process.argv);
@@ -75,7 +75,7 @@ function getPictureInfos(page, filter, callback) {
         async.waterfall([
             (callback) => {
                 var comments = [];
-                $("ol.commentlist li").each((i, element) => {
+                $("ol.commentlist li:not(.row)").each((i, element) => {
                     comments.push(cheerio.load($(element).html()));
                 });
                 callback(null, comments);
@@ -84,10 +84,10 @@ function getPictureInfos(page, filter, callback) {
                 var pictures = [];
                 for (var item of comments) {
                     var id, urls = [], oo, xx;
-                    oo = +item("span.tucao-like-container span").text();
-                    xx = +item("span.tucao-unlike-container span").text();
+                    oo = +item("span.tucao-unlike-container a.like + span").text();
+                    xx = +item("span.tucao-unlike-container a.unlike + span").text();
                     if (!eval(filter)) continue;
-                    id = item("span.tucao-like-container a").attr("data-id");
+                    id = item("span.tucao-unlike-container a.like").attr("data-id");
                     item("a.view_img_link").each((i, element) => {
                         urls.push("http:" + $(element).attr("href"));
                     });

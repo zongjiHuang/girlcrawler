@@ -1,6 +1,6 @@
 {
     "name": "girlcrawler",
-    "version": "1.3.0",
+    "version": "1.3.5",
     "description": "Fast, smart jandan.net/ooxx crawler",
     "main": "main.js",
     "dependencies": {
