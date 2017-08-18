@@ -19,12 +19,15 @@ var url    = "http://jandan.net/ooxx",
     config = dir + "/.config";
 
 var DEFAULT_THREAD  = 64,
-    DEFAULT_FILTER  = "oo > xx",
-    BREAK_IMAGE_MD5 = "9a49736345f17e6c90dfe3bcd74dfb5e";
+    DEFAULT_FILTER  = "oo >= 2 * xx",
+    DEFAULT_BUFFER  = 5
+    BREAK_IMAGE_MD5 = "9a49736345f17e6c90dfe3bcd74dfb5e";    // 这个不是下载下来的坏图的 md5, 是 request 爬下来的 body 的 md5
 
-program.version("1.2.1")
-       .option("-t, --thread <thread>", "The maximum number of concurrent downloads, default " + DEFAULT_THREAD)
-       .option("-f, --filter <filter>", "OO/XX based filter, default \"oo > xx\"")
+program.version("1.3.0")
+       .description("简洁、高效的煎蛋妹子图爬虫, powered by Node.js")
+       .option("-t, --thread <thread>", "下载最大并发数, 默认为 " + DEFAULT_THREAD)
+       .option("-f, --filter <filter>", "基于 OO/XX 的过滤器, 默认为 \"" + DEFAULT_FILTER + "\"")
+       .option("-b, --buffer <buffer>", "缓冲, 表示在下次更新时, 从往前 N 页开始爬起. 默认为 " + DEFAULT_BUFFER)
        .parse(process.argv);
 
 function getPageCount(callback) {
@@ -36,26 +39,31 @@ function getPageCount(callback) {
 }
 
 function getConfig(pageCount, callback) {
-    var thread, filter, start, end = pageCount;
+    var thread, filter, buffer, start, end = pageCount;
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
     if (!fs.existsSync(config)) {
         thread = program.thread || DEFAULT_THREAD;
         filter = program.filter || DEFAULT_FILTER;
+        buffer = program.buffer || DEFAULT_BUFFER;
         start  = 1;
     } else {
         var data = JSON.parse(fs.readFileSync(config, "utf8"));
         thread = program.thread || data.thread || DEFAULT_THREAD;
         filter = program.filter || data.filter || DEFAULT_FILTER;
-        start  = data.lastUpdate || 1;
+        buffer = program.buffer || data.buffer || DEFAULT_BUFFER;
+        if (data.lastUpdate)
+            if (data.lastUpdate - buffer > 0) start = data.lastUpdate - buffer
+            else start = 1
+        else start = 1;
     }
-    callback(null, thread, filter, start, end);
+    callback(null, thread, filter, buffer, start, end);
 }
 
-function setConfig(thread, filter, i, callback) {
+function setConfig(thread, filter, buffer, i, callback) {
     fs.writeFileSync(config, JSON.stringify({
-        thread: thread, filter: filter, lastUpdate: i
+        thread: thread, filter: filter, buffer: buffer, lastUpdate: i
     }));
     callback(null);
 }
@@ -106,6 +114,7 @@ function downloadPics(page, pictures, thread, callback) {
     var breakImage = []
     var bar = new Progress("Downloading page " + page + " [:bar]".blue + " :percent ", {
         total: pictures.length,
+        width: 25,
         complete: "#",
         incomplete: "-",
         clear: true
@@ -141,16 +150,16 @@ async.waterfall([
 
     (callback) => getPageCount(callback),
     (pageCount, callback) => getConfig(pageCount, callback),
-    (thread, filter, start, end, callback) => {
+    (thread, filter, buffer, start, end, callback) => {
 
         console.log();
-        console.log("Running crawler with arguments: " + ("thread=" + thread + ", filter=\"" + filter + "\"").cyan.underline);
+        console.log("爬虫运行中... 参数: " + ("thread=" + thread + ", filter=\"" + filter + "\", buffer=" + buffer).cyan.underline);
 
         // 遍历每一页
         var i = start;
         async.whilst(() => i <= end, (callback) => {
             async.waterfall([
-                (callback) => setConfig(thread, filter, i, callback),
+                (callback) => setConfig(thread, filter, buffer, i, callback),
                 (callback) => getPictureInfos(i, filter, callback),
                 (pictures, callback) => downloadPics(i, pictures, thread, callback),
             ], (err, result) => {
